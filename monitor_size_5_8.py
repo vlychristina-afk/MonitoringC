@@ -15,17 +15,17 @@ from email.mime.text import MIMEText
 from playwright.sync_api import sync_playwright
 
 # --- [설정] ---
-TARGET_URL = "https://www.tiffany.kr/jewelry/rings/picasso-graffiti-sterling-silver-rings-1912170779.html"
+TARGET_URL = "https://www.tiffany.kr/jewelry/rings/picasso-graffiti-18k-yellow-gold-rings-1902371474.html"
 SIZES_TO_CHECK = [5, 8]  # 모니터링할 사이즈
 
 # 이메일: 환경 변수 우선 (TIFFANY_SEND_EMAIL, TIFFANY_RECEIVE_EMAIL, TIFFANY_APP_PASSWORD)
 # Gmail 앱 비밀번호: 16자 그대로 붙여넣기 (띄어쓰기 없음). 예: abcdabcdabcdabcd
 send_email = (os.environ.get("TIFFANY_SEND_EMAIL", "vly_christina@gmail.com") or "").strip()
 receive_email = (os.environ.get("TIFFANY_RECEIVE_EMAIL", "chrissy7782@naver.com") or "").strip()
-app_password = (os.environ.get("TIFFANY_APP_PASSWORD", "wgprjywxmjofikgl") or "").strip().replace(" ", "").replace("\n", "")
+app_password = os.environ.get("APP_PASSWORD")
 
 CHECK_INTERVAL_SEC = 600   # 확인 주기(초) - 10분
-HEADLESS = False           # True면 브라우저 창 숨김
+HEADLESS = True          # True면 브라우저 창 숨김
 PAGE_LOAD_TIMEOUT_MS = 60000   # 페이지 로드 대기(ms) - 60초
 DEBUG_PANEL = True         # True면 슬라이드인 패널에서 가져온 텍스트를 출력
 # ------------------
